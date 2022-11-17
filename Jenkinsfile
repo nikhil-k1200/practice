@@ -14,6 +14,12 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
     stages {
+		stage('install git') {
+		steps {
+			sh '''yum install git -y
+				git -version'''
+		}
+		}
         stage('Example') {
             agent {
                 label 'agent2'
